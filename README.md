@@ -86,7 +86,7 @@ python tools/build_mod.py PoC_DraftTransport --pool-db DebugConfiguration.sqlite
 
 ## Bug reports
 
-Please use **Discussions → Ability Draft Bugs**. Helpful to attach:
+Please use the discussion [**Ability Draft Bugs**](https://github.com/maksdk87/Ability-Draft-Civilization-VI/discussions/1). Helpful to attach:
 
 - the logs from `%LOCALAPPDATA%\Firaxis Games\Sid Meier's Civilization VI\Logs`: `Lua.log`, `Database.log`,
   `Modding.log` (they are overwritten at every game start, so copy them right after the problem);
@@ -124,5 +124,5 @@ MIT license. Civilization, Firaxis and 2K are trademarks of their respective own
 меню может быть тайным «Случайным». Настройка «Стоковая привязка» закрепляет объекты, названные в способностях.
 С BBS стартовые позиции учитывают драфт. Только GS, только сетевая игра, до 12 игроков, несовместим с Multiplayer
 Helper. Установка — папку `PoC_DraftTransport` в `Документы\My Games\Sid Meier's Civilization VI\Mods`, затем
-полный перезапуск игры. Ошибки — в Discussions, тема «Ability Draft Bugs», с файлами `Lua.log`, `Database.log`,
+полный перезапуск игры. Ошибки — в теме [«Ability Draft Bugs»](https://github.com/maksdk87/Ability-Draft-Civilization-VI/discussions/1), с файлами `Lua.log`, `Database.log`,
 `Modding.log`.
