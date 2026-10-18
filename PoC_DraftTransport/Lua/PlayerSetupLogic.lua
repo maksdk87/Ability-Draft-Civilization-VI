@@ -2161,6 +2161,78 @@ function PocdHostFinishRandoms(reason)
 	return PocdBatchIds("random", ids, function(id) return PocdResolveRandomsFor(id, taken, inShare); end);
 end
 
+-- 0.1.2: the host, when the launch countdown starts and right before launch, rolls the item
+-- menus that are still "Random" in ANY slot (a player who got the mod while joining sees no
+-- draft menus until he rejoins the lobby; his menus stay "Random" and nothing rolls them).
+-- Stock binding is honoured. The result is kept only on the host and goes only into the
+-- game settings (bits), so it stays secret; it is kept while the menu stays "Random".
+g_PocdHostRolls = g_PocdHostRolls or {};
+local function PocdItemChoices(playerId, cat)
+	local out = {};
+	local parameters = GetPlayerParameters(playerId);
+	local p = parameters and parameters.Parameters and parameters.Parameters[POCD_ITEM_PARAMS[cat]];
+	if p ~= nil and type(p.Values) == "table" then
+		for _, v in ipairs(p.Values) do
+			if not v.Invalid and type(v.Value) == "string" and not PocdIsRandomValue(v.Value) then table.insert(out, v.Value); end
+		end
+	end
+	if #out == 0 then
+		for _, r in ipairs(PocdQuery("SELECT Cat, Idx, Entity FROM POCD_Index ORDER BY Cat, Idx")) do
+			if r.Cat == cat then table.insert(out, r.Entity); end
+		end
+	end
+	return out;
+end
+
+function PocdHostRollRemaining(reason)
+	if not PocdDraftActive() then return 0; end
+	if Network.IsInSession() and not Network.IsGameHost() then return 0; end
+	local keys = {};
+	for _, menu in ipairs(POCD_MENUS) do keys[menu.Cat] = menu.Key; end
+	local count = 0;
+	for _, id in ipairs(GameConfiguration.GetParticipatingPlayerIDs()) do
+		local cfg = PlayerConfigurations[id];
+		if PocdIsMajorSlot(cfg) then
+			local leader = cfg:GetLeaderTypeName();
+			if type(leader) ~= "string" or PocdIsRandomValue(leader) then leader = nil; end
+			local civ = PocdChosenCiv(cfg);
+			if civ == nil then
+				local okC, real = pcall(function() return cfg:GetCivilizationTypeName(); end);
+				if okC and type(real) == "string" then civ = real; end
+			end
+			local locks = PocdLocksFor(leader, civ);
+			local rolls = g_PocdHostRolls[id] or {};
+			local done = "";
+			for _, cat in ipairs(POCD_ITEM_CATS) do
+				local v = PocdGetPlayerValue(cfg, keys[cat]);
+				if v == nil or (type(v) == "string" and PocdIsRandomValue(v)) then
+					local lock = locks[cat];
+					local cur = rolls[cat];
+					if lock ~= nil then
+						cur = { Item = lock.Item, Lock = true };
+					elseif cur == nil or cur.Lock then
+						local choices = PocdItemChoices(id, cat);
+						if #choices > 0 then cur = { Item = choices[PocdRandom(#choices)], Lock = false }; else cur = nil; end
+					end
+					rolls[cat] = cur;
+					if cur ~= nil then done = done .. cat .. (cur.Lock and "*" or ""); end
+				else
+					rolls[cat] = nil;
+				end
+			end
+			g_PocdHostRolls[id] = rolls;
+			if done ~= "" then
+				count = count + 1;
+				PocdLog("host rolled player " .. tostring(id) .. " menus still random: " .. done .. " (* = stock binding) (" .. tostring(reason) .. ")");
+			end
+			if leader == nil then
+				PocdLog("player " .. tostring(id) .. ": leader still random - the game picks it, this slot has no draft");
+			end
+		end
+	end
+	return count;
+end
+
 function PocdRevertRandoms(localPlayerId)
 	return PocdBatch("revert", localPlayerId, PocdRevertRandomsFor);
 end
@@ -2196,6 +2268,26 @@ function PocdDraftActive()
 	return ok and active == true;
 end
 
+-- 0.1.2: this computer shows the draft lobby; the marker in the player's settings tells the
+-- host who sees the draft menus (a player who got the mod while joining does not, until he
+-- rejoins the lobby). Key POCD_LOBBYUI (POCD_UI is the improvement menu).
+POCD_UI_VERSION = "0.1.2";
+function PocdMarkUI()
+	if not PocdDraftActive() then return false; end
+	local id = Network.GetLocalPlayerID();
+	local cfg = id ~= nil and PlayerConfigurations[id] or nil;
+	if cfg == nil or not PocdIsMajorSlot(cfg) then return false; end
+	if PocdGetPlayerValue(cfg, "POCD_LOBBYUI") == POCD_UI_VERSION then return false; end
+	cfg:SetValue("POCD_LOBBYUI", POCD_UI_VERSION);
+	pcall(function() Network.BroadcastPlayerInfo(id); end);
+	PocdLog("player " .. tostring(id) .. ": draft lobby marker written (" .. POCD_UI_VERSION .. ")");
+	return true;
+end
+
+function PocdHasUI(playerId)
+	return PocdGetPlayerValue(PlayerConfigurations[playerId], "POCD_LOBBYUI") ~= nil;
+end
+
 -- players with a draft: slots 0 .. PocdMaxSlots() - 1 (the staging room blocks the launch
 -- when a civilization sits in a later slot)
 function PocdMaxSlots()
@@ -2211,10 +2303,21 @@ function PocdSlotPicks(playerId)
 	local leader = cfg:GetLeaderTypeName();
 	if type(leader) == "string" then picks.L = PocdIndexOf("L", leader); end
 	picks.C = PocdIndexOf("C", PocdChosenCiv(cfg));
+	-- 0.1.2: a civilization menu still on "Random" (a player without the draft menus): the
+	-- civilization the game gives the slot is the drafted one (it brings only its ability)
+	if picks.C == nil and picks.L ~= nil and PocdDraftActive() then
+		local okC, real = pcall(function() return cfg:GetCivilizationTypeName(); end);
+		if okC and type(real) == "string" then picks.C = PocdIndexOf("C", real); end
+	end
+	local rolls = g_PocdHostRolls[playerId];
 	for _, menu in ipairs(POCD_MENUS) do
 		if menu.Cat ~= "C" then
 			local v = PocdGetPlayerValue(cfg, menu.Key);
-			if type(v) == "string" and not PocdIsRandomValue(v) then picks[menu.Cat] = PocdIndexOf(menu.Cat, v); end
+			if type(v) == "string" and not PocdIsRandomValue(v) then
+				picks[menu.Cat] = PocdIndexOf(menu.Cat, v);
+			elseif rolls ~= nil and rolls[menu.Cat] ~= nil then
+				picks[menu.Cat] = PocdIndexOf(menu.Cat, rolls[menu.Cat].Item);	-- 0.1.2: rolled by the host
+			end
 		end
 	end
 	return picks;
@@ -2253,6 +2356,7 @@ end
 
 function PocdLogPicks(reason)
 	local cats, maxSlots = PocdCats();
+	PocdLog(tostring(reason) .. ": stock binding " .. (PocdStockBindOn() and "on" or "off"));
 	for slot = 0, maxSlots - 1 do
 		local cfg = PlayerConfigurations[slot];
 		local picks = PocdSlotPicks(slot);
@@ -2266,6 +2370,10 @@ function PocdLogPicks(reason)
 				end
 			end
 			table.insert(parts, "secret=" .. PocdHiddenCats(cfg));
+			local hr = "";
+			for cat, r in pairs(g_PocdHostRolls[slot] or {}) do hr = hr .. cat; end
+			if hr ~= "" then table.insert(parts, "hostrolled=" .. hr); end
+			table.insert(parts, "lobby=" .. tostring(PocdGetPlayerValue(cfg, "POCD_LOBBYUI")));
 			PocdLog(tostring(reason) .. " slot " .. slot .. ": " .. table.concat(parts, " "));
 		end
 	end

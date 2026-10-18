@@ -1,5 +1,5 @@
 -- =============================================================================
--- POCD 0.1.1: abilities and the drafted unique items.
+-- POCD 0.1.2: abilities and the drafted unique items.
 -- Runs after POCD_Apply.sql (needs POCD_Slots, POCD_SlotCivs, POCD_MajorItemTraits).
 -- Only in a drafted game: every change below depends on rows in POCD_Slots.
 -- =============================================================================
@@ -153,71 +153,18 @@ JOIN CivilizationTraits ct ON ct.CivilizationType = m.CivilizationType
 WHERE ct.TraitType NOT IN (SELECT TraitType FROM POCD_MajorItemTraits);
 
 -- -----------------------------------------------------------------------------
--- (b) An ability that names a district/building of some kind works with every district/building
---     of that kind the player may have drafted: the base one and the unique ones replacing it
---     (Gaul: campus -> Seowon, Observatory; oppidum -> industrial zone, Hansa. Victoria: Royal Navy
---     Dockyard -> harbor, Cothon. Theodora: hippodrome -> entertainment complex, Street Carnival).
---     The game matches these arguments by the exact type (it lists Tsikhe and Seowon separately
---     itself), and a player has only one district/building of a kind, so nothing counts twice.
---     Skipped when the ability already has the same modifier for that type (Georgia: tsikhe and
---     star fort).
+-- (b) removed in 0.1.2. It copied every ability modifier that names a district/building
+--     (adjacency, great work slots, culture bomb...) for each other member of the kind. The game
+--     already maps such arguments to the whole kind itself, so the copies stacked: Brazil got
+--     +9 instead of +3 for three rainforests next to a campus, a Sukiennice got 4 writing slots
+--     from Sundiata instead of 2. Only the requirements still need the kind (part c).
 -- -----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS POCD_Clones (
-	TraitType TEXT NOT NULL,
-	ModifierId TEXT NOT NULL,
-	NewId TEXT NOT NULL,
-	ArgName TEXT NOT NULL,
-	NewValue TEXT NOT NULL,
-	PRIMARY KEY (TraitType, NewId)
-);
-INSERT OR IGNORE INTO POCD_Clones (TraitType, ModifierId, NewId, ArgName, NewValue)
-SELECT tm.TraitType, tm.ModifierId, tm.ModifierId || '_POCD_' || y.Member, a.Name, y.Member
-FROM TraitModifiers tm
-JOIN POCD_AbilityTraits t ON t.TraitType = tm.TraitType
-JOIN Modifiers m ON m.ModifierId = tm.ModifierId
-JOIN ModifierArguments a ON a.ModifierId = tm.ModifierId AND a.Name IN ('DistrictType', 'BuildingType')
-JOIN POCD_Kinds x ON x.Member = a.Value
-JOIN POCD_Kinds y ON y.Base = x.Base AND y.Member <> x.Member
-WHERE m.ModifierType IN (
-		'MODIFIER_PLAYER_CITIES_IMPROVEMENT_ADJACENCY', 'MODIFIER_PLAYER_CITIES_DISTRICT_ADJACENCY',
-		'MODIFIER_PLAYER_CITIES_FEATURE_ADJACENCY', 'MODIFIER_PLAYER_CITIES_TERRAIN_ADJACENCY',
-		'MODIFIER_PLAYER_CITIES_RIVER_ADJACENCY', 'MODIFIER_PLAYER_DISTRICTS_ADJUST_YIELD_BASED_ON_APPEAL',
-		'MODIFIER_PLAYER_CITIES_ADJUST_DISTRICT_PRODUCTION', 'MODIFIER_PLAYER_CITIES_ADJUST_BUILDING_PRODUCTION',
-		'MODIFIER_PLAYER_DISTRICT_CREATE_UNIT', 'MODIFIER_PLAYER_ADJUST_DISTRICT_ADD_NAVAL_UNIT',
-		'MODIFIER_PLAYER_ADD_CULTURE_BOMB_TRIGGER', 'MODIFIER_PLAYER_CITIES_ENABLE_BUILDING_FAITH_PURCHASE',
-		'MODIFIER_PLAYER_DISTRICT_ADJUST_PLAYER_DISTRICT_AND_BUILDINGS_CREATE_UNIT_WITH_ABILITY_BY_CLASS_GREAT_NEGOTIATORS',
-		'MODIFIER_PLAYER_CITIES_ADJUST_EXTRA_GREAT_WORK_SLOTS', 'MODIFIER_PLAYER_CITIES_ADJUST_BUILDING_YIELD_CHANGE')
-  AND NOT EXISTS (
-	SELECT 1 FROM TraitModifiers tm2
-	JOIN Modifiers m2 ON m2.ModifierId = tm2.ModifierId AND m2.ModifierType = m.ModifierType
-	JOIN ModifierArguments a2 ON a2.ModifierId = tm2.ModifierId AND a2.Name = a.Name AND a2.Value = y.Member
-	WHERE tm2.TraitType = tm.TraitType
-	  AND NOT EXISTS (
-		SELECT Name, Value FROM ModifierArguments WHERE ModifierId = tm.ModifierId AND Name <> a.Name
-		EXCEPT
-		SELECT Name, Value FROM ModifierArguments WHERE ModifierId = tm2.ModifierId))
-  AND NOT EXISTS (SELECT 1 FROM Modifiers z WHERE z.ModifierId = tm.ModifierId || '_POCD_' || y.Member);
-
-INSERT OR IGNORE INTO Modifiers (ModifierId, ModifierType, RunOnce, NewOnly, Permanent, Repeatable,
-	OwnerRequirementSetId, SubjectRequirementSetId, OwnerStackLimit, SubjectStackLimit)
-SELECT DISTINCT c.NewId, m.ModifierType, m.RunOnce, m.NewOnly, m.Permanent, m.Repeatable,
-	m.OwnerRequirementSetId, m.SubjectRequirementSetId, m.OwnerStackLimit, m.SubjectStackLimit
-FROM POCD_Clones c JOIN Modifiers m ON m.ModifierId = c.ModifierId;
-INSERT OR IGNORE INTO ModifierArguments (ModifierId, Name, Type, Value, Extra, SecondExtra)
-SELECT DISTINCT c.NewId, a.Name, a.Type, CASE WHEN a.Name = c.ArgName THEN c.NewValue ELSE a.Value END, a.Extra, a.SecondExtra
-FROM POCD_Clones c JOIN ModifierArguments a ON a.ModifierId = c.ModifierId;
-INSERT OR IGNORE INTO ModifierStrings (ModifierId, Context, Text)
-SELECT DISTINCT c.NewId, s.Context, s.Text
-FROM POCD_Clones c JOIN ModifierStrings s ON s.ModifierId = c.ModifierId;
-INSERT OR IGNORE INTO TraitModifiers (TraitType, ModifierId)
-SELECT TraitType, NewId FROM POCD_Clones;
-
 -- -----------------------------------------------------------------------------
 -- (c) A requirement of an ability that checks one district/building of some kind (city has an
 --     industrial zone, district is a holy site, plot next to an aqueduct, city has a factory...)
 --     accepts every district/building of that kind (Lincoln with a Hansa, Byzantium with a Lavra,
---     Sweden with an Electronics Factory). Like (b), but for requirements instead of modifier
---     arguments. Only the drafted abilities' own modifiers change (and what they attach); the
+--     Sweden with an Electronics Factory). Unlike modifier arguments, requirements check the
+--     exact type, so here the kind has to be added. Only the drafted abilities' own modifiers change (and what they attach); the
 --     shared requirement sets are copied, never edited, so nothing else in the game is touched.
 --     How: requirement R (type argument = X) is replaced in the copied set by a wrapper
 --     "set POCD_RSKA_R is met" (same Inverse as R), and that TEST_ANY set holds a copy of R for

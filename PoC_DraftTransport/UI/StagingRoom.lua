@@ -429,6 +429,7 @@ function OnPlayerInfoChanged(playerID)
 
 		CheckGameAutoStart();	-- Player might have changed their ready status.
 		UpdateReadyButton();
+		pcall(PocdHostCheckUI);	-- POCD 0.1.2
 		
 		-- Update chat target pulldown.
 		PlayerTarget_OnPlayerInfoChanged( playerID, Controls.ChatPull, Controls.ChatEntry, Controls.ChatIcon, m_playerTargetEntries, m_playerTarget, false);
@@ -2327,6 +2328,7 @@ end
 
 function StartLaunchCountdown()
 	pcall(PocdHostFinishRandoms, "countdown");	-- POCD: AI slots added after the host readied up
+	pcall(PocdHostRollRemaining, "countdown");	-- POCD 0.1.2: menus still "Random" in any slot
 	pcall(PocdHostWriteBits, "countdown");	-- POCD: the host puts the picks into the game settings
 	--print("StartLaunchCountdown");
 	local gameState = GameConfiguration.GetGameState();
@@ -3922,6 +3924,7 @@ end
 -------------------------------------------------------------------------------
 function PocdSyncMenus(entry)
 	if entry == nil then return; end
+	pcall(PocdMarkUI);	-- 0.1.2: tell the host this computer shows the draft menus
 	local hidden = entry.PlayerPullDown:IsHidden();
 	for _, menu in ipairs(POCD_MENUS) do
 		local c = entry[menu.Control];
@@ -4026,9 +4029,41 @@ function PocdKeepReadyOnConfigChange()
 	return false;
 end
 
+-- 0.1.2: a player who got the mod while joining sees the game's own lobby (no draft menus)
+-- until he rejoins. When such a player readies up, the host says so in the chat once; his
+-- "Random" menus are rolled by the host at the countdown anyway.
+local m_pocdWarnedNoUI = {};
+function PocdHostCheckUI()
+	if not Network.IsGameHost() then return; end
+	local okA, active = pcall(PocdDraftActive);
+	if not okA or not active then return; end
+	local localId = Network.GetLocalPlayerID();
+	for _, id in ipairs(GameConfiguration.GetParticipatingPlayerIDs()) do
+		local cfg = PlayerConfigurations[id];
+		if id ~= localId and cfg ~= nil and cfg:GetSlotStatus() == SlotStatus.SS_TAKEN and cfg:GetReady() then
+			local okU, hasUI = pcall(PocdHasUI, id);
+			local name = tostring(cfg:GetPlayerName());
+			local key = tostring(id) .. "|" .. name;
+			if okU and not hasUI and not m_pocdWarnedNoUI[key] then
+				m_pocdWarnedNoUI[key] = true;
+				local text = "[Ability Draft] " .. name .. ": no draft menus (the mod was downloaded while joining). "
+					.. "Leave the lobby and join again - no game restart needed. Otherwise your 4 items are rolled at random. / "
+					.. "Нет меню драфта (мод скачан при входе): выйдите из лобби и зайдите снова, перезапуск игры не нужен. Иначе 4 объекта выпадут случайно.";
+				PocdSRLog("player " .. tostring(id) .. " (" .. name .. ") is ready without the draft lobby - chat warning sent");
+				pcall(function()
+					local chatTarget = {};
+					PlayerTargetToChatTarget({ targetType = ChatTargetTypes.CHATTARGET_ALL, targetID = GetNoPlayerTargetID() }, chatTarget);
+					Network.SendChat(text, chatTarget.targetType, chatTarget.targetID);
+				end);
+			end
+		end
+	end
+end
+
 function PocdBeforeLaunch()
 	local ok, err = pcall(function()
 		PocdHostFinishRandoms("launch");
+		PocdHostRollRemaining("launch");
 		PocdHostWriteBits("launch");
 		PocdLogPicks("launch");
 	end);

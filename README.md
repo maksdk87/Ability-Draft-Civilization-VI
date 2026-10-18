@@ -4,7 +4,7 @@ A multiplayer lobby draft for **Civilization VI: Gathering Storm**. Instead of p
 their civilization, every player builds their own combination: a leader, a civilization and four unique items
 are picked separately, each from its own menu.
 
-Version 0.1.1 · author: enjoymyragga ([github.com/maksdk87](https://github.com/maksdk87)) · license: MIT (see below)
+Version 0.1.2 · [changelog](CHANGELOG.md) · author: enjoymyragga ([github.com/maksdk87](https://github.com/maksdk87)) · license: MIT (see below)
 
 ## What it does
 
@@ -15,7 +15,8 @@ Version 0.1.1 · author: enjoymyragga ([github.com/maksdk87](https://github.com/
   techs and civics, repairs and the Civilopedia).
 - Leaders are unique per game; civilizations and items may repeat between players.
 - Any menu can be **Random**: it is rolled when the player readies up and stays secret until the game starts.
-  The host rolls the AI slots too (also AI slots added after the host readied up).
+  The host rolls the AI slots too (also AI slots added after the host readied up) and, from 0.1.2, the menus of
+  players who have no draft menus (see below).
 - An ability that names a district or building works with every district or building of that kind — a unique
   one or the one it replaces (Gaul's campus bonus works with a Seowon, Lincoln's industrial zone with a Hansa,
   and so on).
@@ -37,18 +38,22 @@ Version 0.1.1 · author: enjoymyragga ([github.com/maksdk87](https://github.com/
 - Up to 12 players (the multiplayer limit of the game).
 - Not compatible with **Multiplayer Helper** (both replace the staging room).
 - All players need the same version of the mod.
+- A player who got the mod by automatic download while joining a lobby sees the draft menus only after leaving the
+  lobby and joining it again (the game loads the lobby screen once and does not reload it for a mod downloaded on
+  the way in; no game restart needed). From 0.1.2 the host gets a chat note about such players, and if they stay,
+  their four items are rolled at random and they keep the civilization of their leader.
 
 ## Installation
 
-Subscribe in the Steam Workshop (link will follow), or copy the folder `PoC_DraftTransport` from this repository
+Subscribe in the Steam Workshop ([item 3822159719](https://steamcommunity.com/sharedfiles/filedetails/?id=3822159719)), or copy the folder `PoC_DraftTransport` from this repository
 into
 
 ```
 Documents\My Games\Sid Meier's Civilization VI\Mods
 ```
 
-Restart the game completely after installing or updating the mod. The folder name and the mod id are kept from the
-prototype ("PoC Draft Transport"), so saves and subscriptions stay valid.
+Subscribe before joining a lobby. The folder name and the mod id are kept from the prototype ("PoC Draft
+Transport"), so saves and subscriptions stay valid.
 
 ## How it works
 
@@ -70,6 +75,7 @@ Nothing is changed in a game without the draft (all changes depend on the drafte
 |---|---|
 | `PoC_DraftTransport/` | the mod, exactly as it is uploaded to the Workshop |
 | `tools/build_mod.py` | generator of the per-slot files (see below) |
+| `CHANGELOG.md` | changes by version |
 
 ## Generator (`tools/build_mod.py`)
 
@@ -123,6 +129,7 @@ MIT license. Civilization, Firaxis and 2K are trademarks of their respective own
 уникальные район, здание, улучшение и юнит; лидер даёт только свою способность, цивилизация — только свою. Любое
 меню может быть тайным «Случайным». Настройка «Стоковая привязка» закрепляет объекты, названные в способностях.
 С BBS стартовые позиции учитывают драфт. Только GS, только сетевая игра, до 12 игроков, несовместим с Multiplayer
-Helper. Установка — папку `PoC_DraftTransport` в `Документы\My Games\Sid Meier's Civilization VI\Mods`, затем
-полный перезапуск игры. Ошибки — в теме [«Ability Draft Bugs»](https://github.com/maksdk87/Ability-Draft-Civilization-VI/discussions/1), с файлами `Lua.log`, `Database.log`,
+Helper. Установка — подписка в Мастерской до входа в лобби или папка `PoC_DraftTransport` в
+`Документы\My Games\Sid Meier's Civilization VI\Mods`. Если мод скачался автоматически при входе в лобби, меню драфта
+появятся после выхода из лобби и повторного входа (перезапуск игры не нужен). Изменения — в [CHANGELOG.md](CHANGELOG.md). Ошибки — в теме [«Ability Draft Bugs»](https://github.com/maksdk87/Ability-Draft-Civilization-VI/discussions/1), с файлами `Lua.log`, `Database.log`,
 `Modding.log`.
