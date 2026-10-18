@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameData>
+	<LocalizedText>
+		<Row Tag="LOC_POCD_MENU_LEADER" Language="en_US"><Text>Leader</Text></Row>
+		<Row Tag="LOC_POCD_MENU_CIV" Language="en_US"><Text>Civilization</Text></Row>
+		<Row Tag="LOC_POCD_MENU_DISTRICT" Language="en_US"><Text>Unique district</Text></Row>
+		<Row Tag="LOC_POCD_MENU_BUILDING" Language="en_US"><Text>Unique building</Text></Row>
+		<Row Tag="LOC_POCD_MENU_IMPROVEMENT" Language="en_US"><Text>Unique improvement</Text></Row>
+		<Row Tag="LOC_POCD_MENU_UNIT" Language="en_US"><Text>Unique unit</Text></Row>
+		<Row Tag="LOC_POCD_HDR_COLOR" Language="en_US"><Text>Colour</Text></Row>
+		<Row Tag="LOC_POCD_MENU_COLOR" Language="en_US"><Text>Player colour (so units are not confused)</Text></Row>
+		<Row Tag="LOC_POCD_HDR_CIV" Language="en_US"><Text>Civ</Text></Row>
+		<Row Tag="LOC_POCD_HDR_DISTRICT" Language="en_US"><Text>Distr.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_BUILDING" Language="en_US"><Text>Bldg.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_IMPROVEMENT" Language="en_US"><Text>Impr.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_UNIT" Language="en_US"><Text>Unit</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_CIV" Language="en_US"><Text>Random civilization</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_DISTRICT" Language="en_US"><Text>Random district</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_BUILDING" Language="en_US"><Text>Random building</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_IMPROVEMENT" Language="en_US"><Text>Random improvement</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_UNIT" Language="en_US"><Text>Random unit</Text></Row>
+		<Row Tag="LOC_POCD_STOCK_BIND_NAME" Language="en_US"><Text>Stock binding</Text></Row>
+		<Row Tag="LOC_POCD_STOCK_BIND_DESC" Language="en_US"><Text>Unique items named in the ability of the leader or the civilization stay with them in the draft (Kristina: Queen's Bibliotheque, Korea: Seowon). If both name an item of the same type, the leader's item stays. Off: free draft.</Text></Row>
+		<Row Tag="LOC_POCD_LOCKED_BY" Language="en_US"><Text>Locked by the ability "{1_Ability}" ({2_Owner}).</Text></Row>
+		<Row Tag="LOC_POCD_READY_BLOCKED_SLOTS" Language="en_US"><Text>Too Many Players for the Draft</Text></Row>
+		<Row Tag="LOC_POCD_READY_BLOCKED_SLOTS_TT" Language="en_US"><Text>Can not start game. The draft only covers the first {1_number} slots, and a player is in slot {2_number} or below. Close the extra slots or move the players up.</Text></Row>
+
+		<Row Tag="LOC_POCD_MENU_LEADER" Language="ru_RU"><Text>Лидер</Text></Row>
+		<Row Tag="LOC_POCD_MENU_CIV" Language="ru_RU"><Text>Цивилизация</Text></Row>
+		<Row Tag="LOC_POCD_MENU_DISTRICT" Language="ru_RU"><Text>Уникальный район</Text></Row>
+		<Row Tag="LOC_POCD_MENU_BUILDING" Language="ru_RU"><Text>Уникальное здание</Text></Row>
+		<Row Tag="LOC_POCD_MENU_IMPROVEMENT" Language="ru_RU"><Text>Уникальное улучшение</Text></Row>
+		<Row Tag="LOC_POCD_MENU_UNIT" Language="ru_RU"><Text>Уникальный юнит</Text></Row>
+		<Row Tag="LOC_POCD_HDR_COLOR" Language="ru_RU"><Text>Цвет</Text></Row>
+		<Row Tag="LOC_POCD_MENU_COLOR" Language="ru_RU"><Text>Цвет игрока (чтобы не путать юнитов)</Text></Row>
+		<Row Tag="LOC_POCD_HDR_CIV" Language="ru_RU"><Text>Цив.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_DISTRICT" Language="ru_RU"><Text>Район</Text></Row>
+		<Row Tag="LOC_POCD_HDR_BUILDING" Language="ru_RU"><Text>Здание</Text></Row>
+		<Row Tag="LOC_POCD_HDR_IMPROVEMENT" Language="ru_RU"><Text>Улучш.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_UNIT" Language="ru_RU"><Text>Юнит</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_CIV" Language="ru_RU"><Text>Случайная цивилизация</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_DISTRICT" Language="ru_RU"><Text>Случайный район</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_BUILDING" Language="ru_RU"><Text>Случайное здание</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_IMPROVEMENT" Language="ru_RU"><Text>Случайное улучшение</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_UNIT" Language="ru_RU"><Text>Случайный юнит</Text></Row>
+		<Row Tag="LOC_POCD_STOCK_BIND_NAME" Language="ru_RU"><Text>Стоковая привязка</Text></Row>
+		<Row Tag="LOC_POCD_STOCK_BIND_DESC" Language="ru_RU"><Text>Уникальные объекты, названные в способности лидера или цивилизации, закрепляются за ними в драфте (Кристина — Королевская библиотека, Корея — совон). Если обе способности называют объекты одного типа, остаётся объект лидера. Выключено — свободный драфт.</Text></Row>
+		<Row Tag="LOC_POCD_LOCKED_BY" Language="ru_RU"><Text>Закреплено способностью «{1_Ability}» ({2_Owner}).</Text></Row>
+		<Row Tag="LOC_POCD_READY_BLOCKED_SLOTS" Language="ru_RU"><Text>Слишком много игроков для драфта</Text></Row>
+		<Row Tag="LOC_POCD_READY_BLOCKED_SLOTS_TT" Language="ru_RU"><Text>Нельзя начать игру. Драфт охватывает только первые {1_number} ячеек, а игрок находится в ячейке {2_number} или ниже. Закройте лишние ячейки или переместите игроков выше.</Text></Row>
+
+		<Row Tag="LOC_POCD_MENU_LEADER" Language="fr_FR"><Text>Dirigeant</Text></Row>
+		<Row Tag="LOC_POCD_MENU_CIV" Language="fr_FR"><Text>Civilisation</Text></Row>
+		<Row Tag="LOC_POCD_MENU_DISTRICT" Language="fr_FR"><Text>Quartier exclusif</Text></Row>
+		<Row Tag="LOC_POCD_MENU_BUILDING" Language="fr_FR"><Text>Bâtiment exclusif</Text></Row>
+		<Row Tag="LOC_POCD_MENU_IMPROVEMENT" Language="fr_FR"><Text>Aménagement exclusif</Text></Row>
+		<Row Tag="LOC_POCD_MENU_UNIT" Language="fr_FR"><Text>Unité exclusive</Text></Row>
+		<Row Tag="LOC_POCD_HDR_COLOR" Language="fr_FR"><Text>Couleur</Text></Row>
+		<Row Tag="LOC_POCD_MENU_COLOR" Language="fr_FR"><Text>Couleur du joueur (pour ne pas confondre les unités)</Text></Row>
+		<Row Tag="LOC_POCD_HDR_CIV" Language="fr_FR"><Text>Civ.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_DISTRICT" Language="fr_FR"><Text>Quart.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_BUILDING" Language="fr_FR"><Text>Bât.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_IMPROVEMENT" Language="fr_FR"><Text>Amén.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_UNIT" Language="fr_FR"><Text>Unité</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_CIV" Language="fr_FR"><Text>Civilisation aléatoire</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_DISTRICT" Language="fr_FR"><Text>Quartier aléatoire</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_BUILDING" Language="fr_FR"><Text>Bâtiment aléatoire</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_IMPROVEMENT" Language="fr_FR"><Text>Aménagement aléatoire</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_UNIT" Language="fr_FR"><Text>Unité aléatoire</Text></Row>
+		<Row Tag="LOC_POCD_STOCK_BIND_NAME" Language="fr_FR"><Text>Liaison d'origine</Text></Row>
+		<Row Tag="LOC_POCD_STOCK_BIND_DESC" Language="fr_FR"><Text>Les éléments exclusifs nommés dans la compétence du dirigeant ou de la civilisation leur restent attachés dans le draft ({LOC_LEADER_KRISTINA_NAME} : {LOC_BUILDING_QUEENS_BIBLIOTHEQUE_NAME}, {LOC_CIVILIZATION_KOREA_NAME} : {LOC_DISTRICT_SEOWON_NAME}). Si les deux nomment un élément du même type, celui du dirigeant est conservé. Désactivé : draft libre.</Text></Row>
+		<Row Tag="LOC_POCD_LOCKED_BY" Language="fr_FR"><Text>Verrouillé par la compétence « {1_Ability} » ({2_Owner}).</Text></Row>
+		<Row Tag="LOC_POCD_READY_BLOCKED_SLOTS" Language="fr_FR"><Text>Trop de joueurs pour le draft</Text></Row>
+		<Row Tag="LOC_POCD_READY_BLOCKED_SLOTS_TT" Language="fr_FR"><Text>Lancement de la partie impossible. Le draft ne couvre que les {1_number} premiers emplacements, et un joueur occupe l'emplacement {2_number} ou un emplacement suivant. Fermez les emplacements en trop ou remontez les joueurs.</Text></Row>
+
+		<Row Tag="LOC_POCD_MENU_LEADER" Language="de_DE"><Text>Anführer</Text></Row>
+		<Row Tag="LOC_POCD_MENU_CIV" Language="de_DE"><Text>Zivilisation</Text></Row>
+		<Row Tag="LOC_POCD_MENU_DISTRICT" Language="de_DE"><Text>Einzigartiger Bezirk</Text></Row>
+		<Row Tag="LOC_POCD_MENU_BUILDING" Language="de_DE"><Text>Einzigartiges Gebäude</Text></Row>
+		<Row Tag="LOC_POCD_MENU_IMPROVEMENT" Language="de_DE"><Text>Einzigartige Modernisierung</Text></Row>
+		<Row Tag="LOC_POCD_MENU_UNIT" Language="de_DE"><Text>Einzigartige Einheit</Text></Row>
+		<Row Tag="LOC_POCD_HDR_COLOR" Language="de_DE"><Text>Farbe</Text></Row>
+		<Row Tag="LOC_POCD_MENU_COLOR" Language="de_DE"><Text>Spielerfarbe (damit Einheiten nicht verwechselt werden)</Text></Row>
+		<Row Tag="LOC_POCD_HDR_CIV" Language="de_DE"><Text>Ziv.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_DISTRICT" Language="de_DE"><Text>Bez.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_BUILDING" Language="de_DE"><Text>Geb.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_IMPROVEMENT" Language="de_DE"><Text>Mod.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_UNIT" Language="de_DE"><Text>Einh.</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_CIV" Language="de_DE"><Text>Zufällige Zivilisation</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_DISTRICT" Language="de_DE"><Text>Zufälliger Bezirk</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_BUILDING" Language="de_DE"><Text>Zufälliges Gebäude</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_IMPROVEMENT" Language="de_DE"><Text>Zufällige Modernisierung</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_UNIT" Language="de_DE"><Text>Zufällige Einheit</Text></Row>
+		<Row Tag="LOC_POCD_STOCK_BIND_NAME" Language="de_DE"><Text>Ursprüngliche Bindung</Text></Row>
+		<Row Tag="LOC_POCD_STOCK_BIND_DESC" Language="de_DE"><Text>Einzigartige Objekte, die in der Fähigkeit des Anführers oder der Zivilisation genannt werden, bleiben im Draft bei ihnen ({LOC_LEADER_KRISTINA_NAME}: {LOC_BUILDING_QUEENS_BIBLIOTHEQUE_NAME}, {LOC_CIVILIZATION_KOREA_NAME}: {LOC_DISTRICT_SEOWON_NAME}). Nennen beide ein Objekt desselben Typs, bleibt das des Anführers. Aus: freier Draft.</Text></Row>
+		<Row Tag="LOC_POCD_LOCKED_BY" Language="de_DE"><Text>Gesperrt durch die Fähigkeit „{1_Ability}“ ({2_Owner}).</Text></Row>
+		<Row Tag="LOC_POCD_READY_BLOCKED_SLOTS" Language="de_DE"><Text>Zu viele Spieler für den Draft</Text></Row>
+		<Row Tag="LOC_POCD_READY_BLOCKED_SLOTS_TT" Language="de_DE"><Text>Spiel kann nicht gestartet werden. Der Draft umfasst nur die ersten {1_number} Spielerplätze, und ein Spieler ist auf Platz {2_number} oder darunter. Schließt die überzähligen Plätze oder verschiebt die Spieler nach oben.</Text></Row>
+
+		<Row Tag="LOC_POCD_MENU_LEADER" Language="it_IT"><Text>Leader</Text></Row>
+		<Row Tag="LOC_POCD_MENU_CIV" Language="it_IT"><Text>Civiltà</Text></Row>
+		<Row Tag="LOC_POCD_MENU_DISTRICT" Language="it_IT"><Text>Distretto esclusivo</Text></Row>
+		<Row Tag="LOC_POCD_MENU_BUILDING" Language="it_IT"><Text>Edificio esclusivo</Text></Row>
+		<Row Tag="LOC_POCD_MENU_IMPROVEMENT" Language="it_IT"><Text>Miglioramento esclusivo</Text></Row>
+		<Row Tag="LOC_POCD_MENU_UNIT" Language="it_IT"><Text>Unità esclusiva</Text></Row>
+		<Row Tag="LOC_POCD_HDR_COLOR" Language="it_IT"><Text>Colore</Text></Row>
+		<Row Tag="LOC_POCD_MENU_COLOR" Language="it_IT"><Text>Colore del giocatore (per non confondere le unità)</Text></Row>
+		<Row Tag="LOC_POCD_HDR_CIV" Language="it_IT"><Text>Civ.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_DISTRICT" Language="it_IT"><Text>Distr.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_BUILDING" Language="it_IT"><Text>Edif.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_IMPROVEMENT" Language="it_IT"><Text>Migl.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_UNIT" Language="it_IT"><Text>Unità</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_CIV" Language="it_IT"><Text>Civiltà casuale</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_DISTRICT" Language="it_IT"><Text>Distretto casuale</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_BUILDING" Language="it_IT"><Text>Edificio casuale</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_IMPROVEMENT" Language="it_IT"><Text>Miglioramento casuale</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_UNIT" Language="it_IT"><Text>Unità casuale</Text></Row>
+		<Row Tag="LOC_POCD_STOCK_BIND_NAME" Language="it_IT"><Text>Legame originale</Text></Row>
+		<Row Tag="LOC_POCD_STOCK_BIND_DESC" Language="it_IT"><Text>Gli elementi esclusivi nominati nell'abilità del leader o della civiltà restano legati a loro nel draft ({LOC_LEADER_KRISTINA_NAME}: {LOC_BUILDING_QUEENS_BIBLIOTHEQUE_NAME}, {LOC_CIVILIZATION_KOREA_NAME}: {LOC_DISTRICT_SEOWON_NAME}). Se entrambe nominano un elemento dello stesso tipo, resta quello del leader. Disattivato: draft libero.</Text></Row>
+		<Row Tag="LOC_POCD_LOCKED_BY" Language="it_IT"><Text>Bloccato dall'abilità "{1_Ability}" ({2_Owner}).</Text></Row>
+		<Row Tag="LOC_POCD_READY_BLOCKED_SLOTS" Language="it_IT"><Text>Troppi giocatori per il draft</Text></Row>
+		<Row Tag="LOC_POCD_READY_BLOCKED_SLOTS_TT" Language="it_IT"><Text>Impossibile avviare la partita. Il draft copre solo i primi {1_number} slot e un giocatore occupa lo slot {2_number} o uno successivo. Chiudi gli slot in eccesso o sposta i giocatori più in alto.</Text></Row>
+
+		<Row Tag="LOC_POCD_MENU_LEADER" Language="es_ES"><Text>Líder</Text></Row>
+		<Row Tag="LOC_POCD_MENU_CIV" Language="es_ES"><Text>Civilización</Text></Row>
+		<Row Tag="LOC_POCD_MENU_DISTRICT" Language="es_ES"><Text>Distrito exclusivo</Text></Row>
+		<Row Tag="LOC_POCD_MENU_BUILDING" Language="es_ES"><Text>Edificio exclusivo</Text></Row>
+		<Row Tag="LOC_POCD_MENU_IMPROVEMENT" Language="es_ES"><Text>Mejora exclusiva</Text></Row>
+		<Row Tag="LOC_POCD_MENU_UNIT" Language="es_ES"><Text>Unidad exclusiva</Text></Row>
+		<Row Tag="LOC_POCD_HDR_COLOR" Language="es_ES"><Text>Color</Text></Row>
+		<Row Tag="LOC_POCD_MENU_COLOR" Language="es_ES"><Text>Color del jugador (para no confundir las unidades)</Text></Row>
+		<Row Tag="LOC_POCD_HDR_CIV" Language="es_ES"><Text>Civ.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_DISTRICT" Language="es_ES"><Text>Distr.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_BUILDING" Language="es_ES"><Text>Edif.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_IMPROVEMENT" Language="es_ES"><Text>Mejora</Text></Row>
+		<Row Tag="LOC_POCD_HDR_UNIT" Language="es_ES"><Text>Unidad</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_CIV" Language="es_ES"><Text>Civilización aleatoria</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_DISTRICT" Language="es_ES"><Text>Distrito aleatorio</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_BUILDING" Language="es_ES"><Text>Edificio aleatorio</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_IMPROVEMENT" Language="es_ES"><Text>Mejora aleatoria</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_UNIT" Language="es_ES"><Text>Unidad aleatoria</Text></Row>
+		<Row Tag="LOC_POCD_STOCK_BIND_NAME" Language="es_ES"><Text>Vínculo original</Text></Row>
+		<Row Tag="LOC_POCD_STOCK_BIND_DESC" Language="es_ES"><Text>Los elementos exclusivos nombrados en la habilidad del líder o de la civilización se quedan con ellos en el draft ({LOC_LEADER_KRISTINA_NAME}: {LOC_BUILDING_QUEENS_BIBLIOTHEQUE_NAME}; {LOC_CIVILIZATION_KOREA_NAME}: {LOC_DISTRICT_SEOWON_NAME}). Si ambas nombran un elemento del mismo tipo, se queda el del líder. Desactivado: draft libre.</Text></Row>
+		<Row Tag="LOC_POCD_LOCKED_BY" Language="es_ES"><Text>Bloqueado por la habilidad «{1_Ability}» ({2_Owner}).</Text></Row>
+		<Row Tag="LOC_POCD_READY_BLOCKED_SLOTS" Language="es_ES"><Text>Demasiados jugadores para el draft</Text></Row>
+		<Row Tag="LOC_POCD_READY_BLOCKED_SLOTS_TT" Language="es_ES"><Text>No se puede empezar la partida. El draft solo abarca las primeras {1_number} casillas y hay un jugador en la casilla {2_number} o en una posterior. Cierra las casillas sobrantes o sube a los jugadores.</Text></Row>
+
+		<Row Tag="LOC_POCD_MENU_LEADER" Language="pt_BR"><Text>Líder</Text></Row>
+		<Row Tag="LOC_POCD_MENU_CIV" Language="pt_BR"><Text>Civilização</Text></Row>
+		<Row Tag="LOC_POCD_MENU_DISTRICT" Language="pt_BR"><Text>Distrito exclusivo</Text></Row>
+		<Row Tag="LOC_POCD_MENU_BUILDING" Language="pt_BR"><Text>Edificação exclusiva</Text></Row>
+		<Row Tag="LOC_POCD_MENU_IMPROVEMENT" Language="pt_BR"><Text>Melhoria exclusiva</Text></Row>
+		<Row Tag="LOC_POCD_MENU_UNIT" Language="pt_BR"><Text>Unidade exclusiva</Text></Row>
+		<Row Tag="LOC_POCD_HDR_COLOR" Language="pt_BR"><Text>Cor</Text></Row>
+		<Row Tag="LOC_POCD_MENU_COLOR" Language="pt_BR"><Text>Cor do jogador (para não confundir as unidades)</Text></Row>
+		<Row Tag="LOC_POCD_HDR_CIV" Language="pt_BR"><Text>Civ.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_DISTRICT" Language="pt_BR"><Text>Distr.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_BUILDING" Language="pt_BR"><Text>Edif.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_IMPROVEMENT" Language="pt_BR"><Text>Melh.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_UNIT" Language="pt_BR"><Text>Unid.</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_CIV" Language="pt_BR"><Text>Civilização aleatória</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_DISTRICT" Language="pt_BR"><Text>Distrito aleatório</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_BUILDING" Language="pt_BR"><Text>Edificação aleatória</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_IMPROVEMENT" Language="pt_BR"><Text>Melhoria aleatória</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_UNIT" Language="pt_BR"><Text>Unidade aleatória</Text></Row>
+		<Row Tag="LOC_POCD_STOCK_BIND_NAME" Language="pt_BR"><Text>Vínculo original</Text></Row>
+		<Row Tag="LOC_POCD_STOCK_BIND_DESC" Language="pt_BR"><Text>Itens exclusivos citados na habilidade do líder ou da civilização ficam com eles no draft ({LOC_LEADER_KRISTINA_NAME}: {LOC_BUILDING_QUEENS_BIBLIOTHEQUE_NAME}; {LOC_CIVILIZATION_KOREA_NAME}: {LOC_DISTRICT_SEOWON_NAME}). Se ambas citarem um item do mesmo tipo, fica o do líder. Desativado: draft livre.</Text></Row>
+		<Row Tag="LOC_POCD_LOCKED_BY" Language="pt_BR"><Text>Bloqueado pela habilidade "{1_Ability}" ({2_Owner}).</Text></Row>
+		<Row Tag="LOC_POCD_READY_BLOCKED_SLOTS" Language="pt_BR"><Text>Jogadores demais para o draft</Text></Row>
+		<Row Tag="LOC_POCD_READY_BLOCKED_SLOTS_TT" Language="pt_BR"><Text>Não foi possível iniciar a partida. O draft cobre apenas os primeiros {1_number} espaços de jogador, e há um jogador no espaço {2_number} ou depois dele. Feche os espaços extras ou mova os jogadores para cima.</Text></Row>
+
+		<Row Tag="LOC_POCD_MENU_LEADER" Language="pl_PL"><Text>Przywódca</Text></Row>
+		<Row Tag="LOC_POCD_MENU_CIV" Language="pl_PL"><Text>Cywilizacja</Text></Row>
+		<Row Tag="LOC_POCD_MENU_DISTRICT" Language="pl_PL"><Text>Unikalna dzielnica</Text></Row>
+		<Row Tag="LOC_POCD_MENU_BUILDING" Language="pl_PL"><Text>Unikalna budowla</Text></Row>
+		<Row Tag="LOC_POCD_MENU_IMPROVEMENT" Language="pl_PL"><Text>Unikalne ulepszenie</Text></Row>
+		<Row Tag="LOC_POCD_MENU_UNIT" Language="pl_PL"><Text>Unikalna jednostka</Text></Row>
+		<Row Tag="LOC_POCD_HDR_COLOR" Language="pl_PL"><Text>Kolor</Text></Row>
+		<Row Tag="LOC_POCD_MENU_COLOR" Language="pl_PL"><Text>Kolor gracza (aby nie mylić jednostek)</Text></Row>
+		<Row Tag="LOC_POCD_HDR_CIV" Language="pl_PL"><Text>Cyw.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_DISTRICT" Language="pl_PL"><Text>Dziel.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_BUILDING" Language="pl_PL"><Text>Bud.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_IMPROVEMENT" Language="pl_PL"><Text>Ulep.</Text></Row>
+		<Row Tag="LOC_POCD_HDR_UNIT" Language="pl_PL"><Text>Jedn.</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_CIV" Language="pl_PL"><Text>Losowa cywilizacja</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_DISTRICT" Language="pl_PL"><Text>Losowa dzielnica</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_BUILDING" Language="pl_PL"><Text>Losowa budowla</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_IMPROVEMENT" Language="pl_PL"><Text>Losowe ulepszenie</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_UNIT" Language="pl_PL"><Text>Losowa jednostka</Text></Row>
+		<Row Tag="LOC_POCD_STOCK_BIND_NAME" Language="pl_PL"><Text>Pierwotne powiązanie</Text></Row>
+		<Row Tag="LOC_POCD_STOCK_BIND_DESC" Language="pl_PL"><Text>Unikalne obiekty wymienione w umiejętności przywódcy lub cywilizacji pozostają przy nich w drafcie ({LOC_LEADER_KRISTINA_NAME}: {LOC_BUILDING_QUEENS_BIBLIOTHEQUE_NAME}, {LOC_CIVILIZATION_KOREA_NAME}: {LOC_DISTRICT_SEOWON_NAME}). Jeśli obie wymieniają obiekt tego samego typu, zostaje obiekt przywódcy. Wyłączone: wolny draft.</Text></Row>
+		<Row Tag="LOC_POCD_LOCKED_BY" Language="pl_PL"><Text>Zablokowane przez umiejętność „{1_Ability}” ({2_Owner}).</Text></Row>
+		<Row Tag="LOC_POCD_READY_BLOCKED_SLOTS" Language="pl_PL"><Text>Za dużo graczy dla draftu</Text></Row>
+		<Row Tag="LOC_POCD_READY_BLOCKED_SLOTS_TT" Language="pl_PL"><Text>Nie można rozpocząć rozgrywki. Draft obejmuje tylko pierwsze miejsca graczy (liczba miejsc: {1_number}), a gracz zajmuje miejsce nr {2_number} lub dalsze. Zamknij nadmiarowe miejsca lub przesuń graczy wyżej.</Text></Row>
+
+		<Row Tag="LOC_POCD_MENU_LEADER" Language="ja_JP"><Text>指導者</Text></Row>
+		<Row Tag="LOC_POCD_MENU_CIV" Language="ja_JP"><Text>文明</Text></Row>
+		<Row Tag="LOC_POCD_MENU_DISTRICT" Language="ja_JP"><Text>固有の区域</Text></Row>
+		<Row Tag="LOC_POCD_MENU_BUILDING" Language="ja_JP"><Text>固有の建造物</Text></Row>
+		<Row Tag="LOC_POCD_MENU_IMPROVEMENT" Language="ja_JP"><Text>固有の施設</Text></Row>
+		<Row Tag="LOC_POCD_MENU_UNIT" Language="ja_JP"><Text>固有ユニット</Text></Row>
+		<Row Tag="LOC_POCD_HDR_COLOR" Language="ja_JP"><Text>色</Text></Row>
+		<Row Tag="LOC_POCD_MENU_COLOR" Language="ja_JP"><Text>プレイヤーの色（ユニットを見分けるため）</Text></Row>
+		<Row Tag="LOC_POCD_HDR_CIV" Language="ja_JP"><Text>文明</Text></Row>
+		<Row Tag="LOC_POCD_HDR_DISTRICT" Language="ja_JP"><Text>区域</Text></Row>
+		<Row Tag="LOC_POCD_HDR_BUILDING" Language="ja_JP"><Text>建造物</Text></Row>
+		<Row Tag="LOC_POCD_HDR_IMPROVEMENT" Language="ja_JP"><Text>施設</Text></Row>
+		<Row Tag="LOC_POCD_HDR_UNIT" Language="ja_JP"><Text>ユニット</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_CIV" Language="ja_JP"><Text>ランダムな文明</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_DISTRICT" Language="ja_JP"><Text>ランダムな区域</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_BUILDING" Language="ja_JP"><Text>ランダムな建造物</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_IMPROVEMENT" Language="ja_JP"><Text>ランダムな施設</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_UNIT" Language="ja_JP"><Text>ランダムなユニット</Text></Row>
+		<Row Tag="LOC_POCD_STOCK_BIND_NAME" Language="ja_JP"><Text>本来の紐付け</Text></Row>
+		<Row Tag="LOC_POCD_STOCK_BIND_DESC" Language="ja_JP"><Text>指導者または文明の能力で名前が挙がっている固有の要素は、ドラフトでもその指導者・文明に固定されます（{LOC_LEADER_KRISTINA_NAME}：{LOC_BUILDING_QUEENS_BIBLIOTHEQUE_NAME}、{LOC_CIVILIZATION_KOREA_NAME}：{LOC_DISTRICT_SEOWON_NAME}）。両方が同じ種類の要素を挙げている場合は、指導者の要素が残ります。オフ：自由なドラフト。</Text></Row>
+		<Row Tag="LOC_POCD_LOCKED_BY" Language="ja_JP"><Text>能力「{1_Ability}」（{2_Owner}）により固定されています。</Text></Row>
+		<Row Tag="LOC_POCD_READY_BLOCKED_SLOTS" Language="ja_JP"><Text>ドラフトのプレイヤー数が多すぎます</Text></Row>
+		<Row Tag="LOC_POCD_READY_BLOCKED_SLOTS_TT" Language="ja_JP"><Text>ゲームを開始できません。ドラフトは最初の{1_number}スロットのみが対象で、{2_number}番目以降のスロットにプレイヤーがいます。余分なスロットを閉じるか、プレイヤーを上に移動してください。</Text></Row>
+
+		<Row Tag="LOC_POCD_MENU_LEADER" Language="ko_KR"><Text>지도자</Text></Row>
+		<Row Tag="LOC_POCD_MENU_CIV" Language="ko_KR"><Text>문명</Text></Row>
+		<Row Tag="LOC_POCD_MENU_DISTRICT" Language="ko_KR"><Text>고유 특수지구</Text></Row>
+		<Row Tag="LOC_POCD_MENU_BUILDING" Language="ko_KR"><Text>고유 건물</Text></Row>
+		<Row Tag="LOC_POCD_MENU_IMPROVEMENT" Language="ko_KR"><Text>고유 시설</Text></Row>
+		<Row Tag="LOC_POCD_MENU_UNIT" Language="ko_KR"><Text>고유 유닛</Text></Row>
+		<Row Tag="LOC_POCD_HDR_COLOR" Language="ko_KR"><Text>색상</Text></Row>
+		<Row Tag="LOC_POCD_MENU_COLOR" Language="ko_KR"><Text>플레이어 색상 (유닛을 헷갈리지 않도록)</Text></Row>
+		<Row Tag="LOC_POCD_HDR_CIV" Language="ko_KR"><Text>문명</Text></Row>
+		<Row Tag="LOC_POCD_HDR_DISTRICT" Language="ko_KR"><Text>지구</Text></Row>
+		<Row Tag="LOC_POCD_HDR_BUILDING" Language="ko_KR"><Text>건물</Text></Row>
+		<Row Tag="LOC_POCD_HDR_IMPROVEMENT" Language="ko_KR"><Text>시설</Text></Row>
+		<Row Tag="LOC_POCD_HDR_UNIT" Language="ko_KR"><Text>유닛</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_CIV" Language="ko_KR"><Text>무작위 문명</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_DISTRICT" Language="ko_KR"><Text>무작위 특수지구</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_BUILDING" Language="ko_KR"><Text>무작위 건물</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_IMPROVEMENT" Language="ko_KR"><Text>무작위 시설</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_UNIT" Language="ko_KR"><Text>무작위 유닛</Text></Row>
+		<Row Tag="LOC_POCD_STOCK_BIND_NAME" Language="ko_KR"><Text>원래 귀속</Text></Row>
+		<Row Tag="LOC_POCD_STOCK_BIND_DESC" Language="ko_KR"><Text>지도자 또는 문명의 능력에 이름이 나오는 고유 요소는 드래프트에서도 그 지도자나 문명에 고정됩니다({LOC_LEADER_KRISTINA_NAME}: {LOC_BUILDING_QUEENS_BIBLIOTHEQUE_NAME}, {LOC_CIVILIZATION_KOREA_NAME}: {LOC_DISTRICT_SEOWON_NAME}). 둘 다 같은 종류의 요소를 지정하면 지도자의 요소가 남습니다. 끄기: 자유 드래프트.</Text></Row>
+		<Row Tag="LOC_POCD_LOCKED_BY" Language="ko_KR"><Text>능력 "{1_Ability}"({2_Owner})에 의해 고정됨.</Text></Row>
+		<Row Tag="LOC_POCD_READY_BLOCKED_SLOTS" Language="ko_KR"><Text>드래프트 인원 초과</Text></Row>
+		<Row Tag="LOC_POCD_READY_BLOCKED_SLOTS_TT" Language="ko_KR"><Text>게임을 시작할 수 없습니다. 드래프트는 처음 {1_number}개 슬롯만 대상으로 하며, {2_number}번째 이후 슬롯에 플레이어가 있습니다. 남는 슬롯을 닫거나 플레이어를 위로 옮기십시오.</Text></Row>
+
+		<Row Tag="LOC_POCD_MENU_LEADER" Language="zh_Hans_CN"><Text>领袖</Text></Row>
+		<Row Tag="LOC_POCD_MENU_CIV" Language="zh_Hans_CN"><Text>文明</Text></Row>
+		<Row Tag="LOC_POCD_MENU_DISTRICT" Language="zh_Hans_CN"><Text>特色区域</Text></Row>
+		<Row Tag="LOC_POCD_MENU_BUILDING" Language="zh_Hans_CN"><Text>特色建筑</Text></Row>
+		<Row Tag="LOC_POCD_MENU_IMPROVEMENT" Language="zh_Hans_CN"><Text>特色改良设施</Text></Row>
+		<Row Tag="LOC_POCD_MENU_UNIT" Language="zh_Hans_CN"><Text>特色单位</Text></Row>
+		<Row Tag="LOC_POCD_HDR_COLOR" Language="zh_Hans_CN"><Text>颜色</Text></Row>
+		<Row Tag="LOC_POCD_MENU_COLOR" Language="zh_Hans_CN"><Text>玩家颜色（避免混淆单位）</Text></Row>
+		<Row Tag="LOC_POCD_HDR_CIV" Language="zh_Hans_CN"><Text>文明</Text></Row>
+		<Row Tag="LOC_POCD_HDR_DISTRICT" Language="zh_Hans_CN"><Text>区域</Text></Row>
+		<Row Tag="LOC_POCD_HDR_BUILDING" Language="zh_Hans_CN"><Text>建筑</Text></Row>
+		<Row Tag="LOC_POCD_HDR_IMPROVEMENT" Language="zh_Hans_CN"><Text>改良</Text></Row>
+		<Row Tag="LOC_POCD_HDR_UNIT" Language="zh_Hans_CN"><Text>单位</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_CIV" Language="zh_Hans_CN"><Text>随机的文明</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_DISTRICT" Language="zh_Hans_CN"><Text>随机的区域</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_BUILDING" Language="zh_Hans_CN"><Text>随机的建筑</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_IMPROVEMENT" Language="zh_Hans_CN"><Text>随机的改良设施</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_UNIT" Language="zh_Hans_CN"><Text>随机的单位</Text></Row>
+		<Row Tag="LOC_POCD_STOCK_BIND_NAME" Language="zh_Hans_CN"><Text>原始绑定</Text></Row>
+		<Row Tag="LOC_POCD_STOCK_BIND_DESC" Language="zh_Hans_CN"><Text>领袖或文明能力中提到的特色项目在选秀中仍归其所有（{LOC_LEADER_KRISTINA_NAME}：{LOC_BUILDING_QUEENS_BIBLIOTHEQUE_NAME}，{LOC_CIVILIZATION_KOREA_NAME}：{LOC_DISTRICT_SEOWON_NAME}）。如果两者都提到同一类型的项目，则保留领袖的项目。关闭：自由选秀。</Text></Row>
+		<Row Tag="LOC_POCD_LOCKED_BY" Language="zh_Hans_CN"><Text>被能力“{1_Ability}”（{2_Owner}）锁定。</Text></Row>
+		<Row Tag="LOC_POCD_READY_BLOCKED_SLOTS" Language="zh_Hans_CN"><Text>选秀玩家过多</Text></Row>
+		<Row Tag="LOC_POCD_READY_BLOCKED_SLOTS_TT" Language="zh_Hans_CN"><Text>游戏无法开始。选秀仅支持前{1_number}个玩家槽位，而有玩家位于第{2_number}个或之后的槽位。请关闭多余的槽位或将玩家上移。</Text></Row>
+
+		<Row Tag="LOC_POCD_MENU_LEADER" Language="zh_Hant_HK"><Text>領袖</Text></Row>
+		<Row Tag="LOC_POCD_MENU_CIV" Language="zh_Hant_HK"><Text>文明</Text></Row>
+		<Row Tag="LOC_POCD_MENU_DISTRICT" Language="zh_Hant_HK"><Text>特色區域</Text></Row>
+		<Row Tag="LOC_POCD_MENU_BUILDING" Language="zh_Hant_HK"><Text>特色建築</Text></Row>
+		<Row Tag="LOC_POCD_MENU_IMPROVEMENT" Language="zh_Hant_HK"><Text>特色改良設施</Text></Row>
+		<Row Tag="LOC_POCD_MENU_UNIT" Language="zh_Hant_HK"><Text>特色單位</Text></Row>
+		<Row Tag="LOC_POCD_HDR_COLOR" Language="zh_Hant_HK"><Text>顏色</Text></Row>
+		<Row Tag="LOC_POCD_MENU_COLOR" Language="zh_Hant_HK"><Text>玩家顏色（避免混淆單位）</Text></Row>
+		<Row Tag="LOC_POCD_HDR_CIV" Language="zh_Hant_HK"><Text>文明</Text></Row>
+		<Row Tag="LOC_POCD_HDR_DISTRICT" Language="zh_Hant_HK"><Text>區域</Text></Row>
+		<Row Tag="LOC_POCD_HDR_BUILDING" Language="zh_Hant_HK"><Text>建築</Text></Row>
+		<Row Tag="LOC_POCD_HDR_IMPROVEMENT" Language="zh_Hant_HK"><Text>改良</Text></Row>
+		<Row Tag="LOC_POCD_HDR_UNIT" Language="zh_Hant_HK"><Text>單位</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_CIV" Language="zh_Hant_HK"><Text>隨機的文明</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_DISTRICT" Language="zh_Hant_HK"><Text>隨機的區域</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_BUILDING" Language="zh_Hant_HK"><Text>隨機的建築</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_IMPROVEMENT" Language="zh_Hant_HK"><Text>隨機的改良設施</Text></Row>
+		<Row Tag="LOC_POCD_RANDOM_UNIT" Language="zh_Hant_HK"><Text>隨機的單位</Text></Row>
+		<Row Tag="LOC_POCD_STOCK_BIND_NAME" Language="zh_Hant_HK"><Text>原始綁定</Text></Row>
+		<Row Tag="LOC_POCD_STOCK_BIND_DESC" Language="zh_Hant_HK"><Text>領袖或文明能力中提到的特色項目在選秀中仍歸其所有（{LOC_LEADER_KRISTINA_NAME}：{LOC_BUILDING_QUEENS_BIBLIOTHEQUE_NAME}，{LOC_CIVILIZATION_KOREA_NAME}：{LOC_DISTRICT_SEOWON_NAME}）。如果兩者都提到同一類型的項目，則保留領袖的項目。關閉：自由選秀。</Text></Row>
+		<Row Tag="LOC_POCD_LOCKED_BY" Language="zh_Hant_HK"><Text>被能力「{1_Ability}」（{2_Owner}）鎖定。</Text></Row>
+		<Row Tag="LOC_POCD_READY_BLOCKED_SLOTS" Language="zh_Hant_HK"><Text>選秀玩家過多</Text></Row>
+		<Row Tag="LOC_POCD_READY_BLOCKED_SLOTS_TT" Language="zh_Hant_HK"><Text>遊戲無法開始。選秀僅支援前{1_number}個玩家槽位，而有玩家位於第{2_number}個或之後的槽位。請關閉多餘的槽位或將玩家上移。</Text></Row>
+	</LocalizedText>
+</GameData>

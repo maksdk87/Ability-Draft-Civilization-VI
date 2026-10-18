@@ -1,0 +1,2 @@
+-- POCD_S13_L_B5
+INSERT OR IGNORE INTO POCD_SlotBits (Slot, Cat, Bit) VALUES (13, 'L', 5);

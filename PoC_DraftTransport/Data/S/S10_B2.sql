@@ -1,0 +1,2 @@
+-- POCD_S10_B_B2
+INSERT OR IGNORE INTO POCD_SlotBits (Slot, Cat, Bit) VALUES (10, 'B', 2);

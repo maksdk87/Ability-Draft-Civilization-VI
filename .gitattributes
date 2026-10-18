@@ -1,0 +1,2 @@
+# keep every file byte for byte as it is in the mod (no line-ending conversion)
+* -text
