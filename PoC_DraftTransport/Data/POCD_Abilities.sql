@@ -1,5 +1,5 @@
 -- =============================================================================
--- POCD 0.1.2: abilities and the drafted unique items.
+-- POCD 0.1.3: abilities and the drafted unique items.
 -- Runs after POCD_Apply.sql (needs POCD_Slots, POCD_SlotCivs, POCD_MajorItemTraits).
 -- Only in a drafted game: every change below depends on rows in POCD_Slots.
 -- =============================================================================
@@ -334,5 +334,34 @@ WHERE ModifierId IN (SELECT ModifierId FROM POCD_KMods)
 UPDATE Modifiers SET OwnerRequirementSetId = 'POCD_RSK_' || OwnerRequirementSetId
 WHERE ModifierId IN (SELECT ModifierId FROM POCD_KMods)
   AND OwnerRequirementSetId IN (SELECT RequirementSetId FROM POCD_KAff);
+
+-- -----------------------------------------------------------------------------
+-- (d) 0.1.3: Dido's capital move. The project needs a Cothon, but the move itself is Dido's
+--     ability: in a draft anybody with a Cothon saw a project that did nothing, and Dido without
+--     a Cothon had none. Drafted game only: the project needs a harbor of any kind (the game
+--     counts a unique district as its base: harbor, Cothon, Royal Navy Dockyard) and only Dido's
+--     ability unlocks it (as Catherine's Court Festival: theater + unlocked by her ability).
+--     Without Dido in the game nobody has the project. The project text is not changed.
+-- -----------------------------------------------------------------------------
+UPDATE Projects SET PrereqDistrict = 'DISTRICT_HARBOR', UnlocksFromEffect = 1
+WHERE ProjectType = 'PROJECT_COTHON_CAPITAL_MOVE'
+  AND EXISTS (SELECT 1 FROM POCD_Slots)
+  AND EXISTS (SELECT 1 FROM Districts WHERE DistrictType = 'DISTRICT_HARBOR')
+  AND EXISTS (SELECT 1 FROM Traits WHERE TraitType = 'TRAIT_LEADER_FOUNDER_CARTHAGE');
+INSERT OR IGNORE INTO Types (Type, Kind)
+SELECT 'MODIFIER_POCD_PLAYER_ALLOW_PROJECT', 'KIND_MODIFIER'
+WHERE EXISTS (SELECT 1 FROM Projects WHERE ProjectType = 'PROJECT_COTHON_CAPITAL_MOVE' AND UnlocksFromEffect = 1);
+INSERT OR IGNORE INTO DynamicModifiers (ModifierType, CollectionType, EffectType)
+SELECT 'MODIFIER_POCD_PLAYER_ALLOW_PROJECT', 'COLLECTION_OWNER', 'EFFECT_ADD_PLAYER_PROJECT_AVAILABILITY'
+WHERE EXISTS (SELECT 1 FROM Types WHERE Type = 'MODIFIER_POCD_PLAYER_ALLOW_PROJECT');
+INSERT OR IGNORE INTO Modifiers (ModifierId, ModifierType)
+SELECT 'POCD_DIDO_ALLOW_CAPITAL_MOVE', 'MODIFIER_POCD_PLAYER_ALLOW_PROJECT'
+WHERE EXISTS (SELECT 1 FROM DynamicModifiers WHERE ModifierType = 'MODIFIER_POCD_PLAYER_ALLOW_PROJECT');
+INSERT OR IGNORE INTO ModifierArguments (ModifierId, Name, Value)
+SELECT 'POCD_DIDO_ALLOW_CAPITAL_MOVE', 'ProjectType', 'PROJECT_COTHON_CAPITAL_MOVE'
+WHERE EXISTS (SELECT 1 FROM Modifiers WHERE ModifierId = 'POCD_DIDO_ALLOW_CAPITAL_MOVE');
+INSERT OR IGNORE INTO TraitModifiers (TraitType, ModifierId)
+SELECT 'TRAIT_LEADER_FOUNDER_CARTHAGE', 'POCD_DIDO_ALLOW_CAPITAL_MOVE'
+WHERE EXISTS (SELECT 1 FROM Modifiers WHERE ModifierId = 'POCD_DIDO_ALLOW_CAPITAL_MOVE');
 
 INSERT OR IGNORE INTO POCD_Hits (Name) VALUES ('abilities_done');

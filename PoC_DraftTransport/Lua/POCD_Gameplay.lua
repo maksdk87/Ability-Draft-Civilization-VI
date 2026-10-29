@@ -1,4 +1,4 @@
--- POCD 0.1.2 gameplay script
+-- POCD 0.1.3 gameplay script
 -- The draft is applied by the database when the game loads (conditional actions + POCD_Apply.sql).
 -- This script grants nothing. It only logs what the database gave each player.
 
@@ -16,7 +16,7 @@ local function Rows(tableName)
 end
 
 local function DumpDraftTables()
-	for _, t in ipairs({ "POCD_SlotPicks", "POCD_Slots", "POCD_SlotCivs", "POCD_SlotItems", "POCD_AdjMoves", "POCD_Hits" }) do
+	for _, t in ipairs({ "POCD_SlotPicks", "POCD_Slots", "POCD_SlotCivs", "POCD_SlotItems", "POCD_AdjMoves", "POCD_LeaderMechanics", "POCD_Hits" }) do
 		local rows, err = Rows(t)
 		if rows == nil then
 			Log("table " .. t .. ": not readable (" .. tostring(err) .. ")")
@@ -193,4 +193,4 @@ pcall(function()
 	end)
 end)
 
-Log("0.1.2 gameplay script loaded turn=" .. tostring(Game.GetCurrentGameTurn()))
+Log("0.1.3 gameplay script loaded turn=" .. tostring(Game.GetCurrentGameTurn()))

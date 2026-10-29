@@ -2167,18 +2167,27 @@ end
 -- Stock binding is honoured. The result is kept only on the host and goes only into the
 -- game settings (bits), so it stays secret; it is kept while the menu stays "Random".
 g_PocdHostRolls = g_PocdHostRolls or {};
+-- 0.1.3: items that are a leader's own mechanic (Config POCD_LeaderMechanics) are never a pick
+local _pocdMechanics = nil;
+function PocdIsMechanicItem(item)
+	if _pocdMechanics == nil then
+		_pocdMechanics = {};
+		for _, r in ipairs(PocdQuery("SELECT ItemType FROM POCD_LeaderMechanics")) do _pocdMechanics[r.ItemType] = true; end
+	end
+	return item ~= nil and _pocdMechanics[item] == true;
+end
 local function PocdItemChoices(playerId, cat)
 	local out = {};
 	local parameters = GetPlayerParameters(playerId);
 	local p = parameters and parameters.Parameters and parameters.Parameters[POCD_ITEM_PARAMS[cat]];
 	if p ~= nil and type(p.Values) == "table" then
 		for _, v in ipairs(p.Values) do
-			if not v.Invalid and type(v.Value) == "string" and not PocdIsRandomValue(v.Value) then table.insert(out, v.Value); end
+			if not v.Invalid and type(v.Value) == "string" and not PocdIsRandomValue(v.Value) and not PocdIsMechanicItem(v.Value) then table.insert(out, v.Value); end
 		end
 	end
 	if #out == 0 then
 		for _, r in ipairs(PocdQuery("SELECT Cat, Idx, Entity FROM POCD_Index ORDER BY Cat, Idx")) do
-			if r.Cat == cat then table.insert(out, r.Entity); end
+			if r.Cat == cat and not PocdIsMechanicItem(r.Entity) then table.insert(out, r.Entity); end
 		end
 	end
 	return out;
@@ -2271,7 +2280,7 @@ end
 -- 0.1.2: this computer shows the draft lobby; the marker in the player's settings tells the
 -- host who sees the draft menus (a player who got the mod while joining does not, until he
 -- rejoins the lobby). Key POCD_LOBBYUI (POCD_UI is the improvement menu).
-POCD_UI_VERSION = "0.1.2";
+POCD_UI_VERSION = "0.1.3";
 function PocdMarkUI()
 	if not PocdDraftActive() then return false; end
 	local id = Network.GetLocalPlayerID();

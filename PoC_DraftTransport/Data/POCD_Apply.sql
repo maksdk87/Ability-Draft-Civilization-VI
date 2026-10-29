@@ -107,11 +107,30 @@ DELETE FROM LeaderTraits
 WHERE TraitType IN (SELECT TraitType FROM POCD_MajorItemTraits)
   AND LeaderType IN (SELECT LeaderType FROM POCD_Slots);
 
--- 4) picked unique items become the player's own
+-- 0.1.3: items that are a leader's own mechanic, not a draft pick (Bolivar: Comandante General -
+-- his ability grants them, the unit trait belongs to Gran Colombia). Same list as in Config.
+CREATE TABLE IF NOT EXISTS POCD_LeaderMechanics (
+	LeaderType TEXT NOT NULL,
+	ItemType TEXT NOT NULL,
+	PRIMARY KEY (LeaderType, ItemType)
+);
+INSERT OR REPLACE INTO POCD_LeaderMechanics (LeaderType, ItemType) VALUES
+('LEADER_SIMON_BOLIVAR', 'UNIT_COMANDANTE_GENERAL');
+
+-- 4) picked unique items become the player's own (a leader mechanic is never a pick)
 INSERT OR IGNORE INTO LeaderTraits (LeaderType, TraitType)
 SELECT s.LeaderType, m.TraitType
 FROM POCD_Slots s
 JOIN POCD_SlotItems i ON i.Slot = s.Slot
-JOIN POCD_MajorItemTraits m ON m.ItemType = i.ItemType;
+JOIN POCD_MajorItemTraits m ON m.ItemType = i.ItemType
+WHERE i.ItemType NOT IN (SELECT ItemType FROM POCD_LeaderMechanics);
+
+-- 5) 0.1.3: a leader's mechanic stays with that leader, whatever was drafted and with any stock
+--    binding; nobody else gets it (a picked Gran Colombia lost it in step 2)
+INSERT OR IGNORE INTO LeaderTraits (LeaderType, TraitType)
+SELECT s.LeaderType, m.TraitType
+FROM POCD_Slots s
+JOIN POCD_LeaderMechanics lm ON lm.LeaderType = s.LeaderType
+JOIN POCD_MajorItemTraits m ON m.ItemType = lm.ItemType;
 
 INSERT OR IGNORE INTO POCD_Hits (Name) VALUES ('apply_done');

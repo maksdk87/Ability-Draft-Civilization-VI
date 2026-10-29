@@ -4,7 +4,7 @@ A multiplayer lobby draft for **Civilization VI: Gathering Storm**. Instead of p
 their civilization, every player builds their own combination: a leader, a civilization and four unique items
 are picked separately, each from its own menu.
 
-Version 0.1.2 · [changelog](CHANGELOG.md) · author: enjoymyragga ([github.com/maksdk87](https://github.com/maksdk87)) · license: MIT (see below)
+Version 0.1.3 · [changelog](CHANGELOG.md) · author: enjoymyragga ([github.com/maksdk87](https://github.com/maksdk87)) · license: MIT (see below)
 
 ## What it does
 

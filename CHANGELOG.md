@@ -3,6 +3,12 @@
 Workshop: [3822159719](https://steamcommunity.com/sharedfiles/filedetails/?id=3822159719) ·
 bugs: [Ability Draft Bugs](https://github.com/maksdk87/Ability-Draft-Civilization-VI/discussions/1)
 
+## 0.1.3 — 2026-10-22
+
+### Changed
+- Comandante General is Simón Bolívar's own mechanic: no longer in the unique unit menu; Bolívar always gets it, other players never.
+- Dido can move her capital to any city with a harbor (Harbor, Cothon or Royal Navy Dockyard); other players with a Cothon no longer see this project.
+
 ## 0.1.2 — 2026-10-18
 
 ### Fixed
@@ -22,5 +28,6 @@ bugs: [Ability Draft Bugs](https://github.com/maksdk87/Ability-Draft-Civilizatio
 
 ## Кратко на русском
 
+- **0.1.3:** главнокомандующий — только механика Боливара (не в меню, у Боливара всегда); Дидона переносит столицу в любой город с гаванью или её аналогом, другим игрокам с котоном проект не виден.
 - **0.1.2:** бонусы способностей к районам и зданиям больше не удваиваются; игроки, скачавшие мод при входе в лобби, получают драфт от хоста; BBS не отказывает из-за невыбранных цивилизаций; хост пишет таким игрокам «перезайдите в лобби».
 - **0.1.1:** первая публичная версия.

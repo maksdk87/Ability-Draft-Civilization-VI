@@ -99,7 +99,7 @@ DirectionTypes = {
 
 
 -------------------------------------------------------------------------------
--- Ability Draft (PoC Draft Transport) v27.5: start biases from the draft, for BBS
+-- Ability Draft 0.1.3: start biases from the draft, for BBS
 -- (everything above is the unchanged Gathering Storm MapEnums.lua)
 --
 -- BBS asks for start biases by civilization (BBS_AssignStartingPlots:__FindBias).
@@ -112,7 +112,7 @@ DirectionTypes = {
 -- both triggers are removed again. Without BBS or without draft data nothing changes.
 -------------------------------------------------------------------------------
 if POCD_SB == nil and TerrainBuilder ~= nil then
-	POCD_SB = { ver = "27.5", armed = false, done = false, mine = {}, checks = 0, budget = 20000 };
+	POCD_SB = { ver = "0.1.3", armed = false, done = false, mine = {}, checks = 0, budget = 20000 };
 end
 
 if POCD_SB ~= nil and not POCD_SB.armed then
@@ -339,7 +339,7 @@ if POCD_SB ~= nil and not POCD_SB.armed then
 				S.mine[w] = true;
 				t.__FindBias = w;
 				S.seenBBS = true;
-				SB_Log("BBS start bias hook installed (v" .. S.ver .. ")");
+				SB_Log("BBS start bias hook installed (" .. S.ver .. ")");
 			end
 		end
 		local g = IsTundraCiv;

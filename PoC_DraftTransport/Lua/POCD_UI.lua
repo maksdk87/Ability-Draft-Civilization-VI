@@ -66,4 +66,4 @@ local function OnLocalPlayerTurnBegin()
 end
 
 Events.LocalPlayerTurnBegin.Add(OnLocalPlayerTurnBegin)
-Log("v23 UI script loaded")
+Log("0.1.3 UI script loaded")

@@ -274,7 +274,7 @@ INSERT INTO Parameters (ParameterId, Name, Description, Domain, Hash, DefaultVal
 
 INSERT INTO Queries (QueryId, SQL) VALUES
 ('POCD_CivValues', 'SELECT ''POCD_Civilizations'' AS Domain, p.CivilizationType AS Value, p.CivilizationName AS Name, p.CivilizationAbilityDescription AS Description, p.CivilizationIcon AS Icon, 100 AS SortIndex FROM Players p JOIN POCD_Index x ON x.Cat = ''C'' AND x.Entity = p.CivilizationType WHERE p.Domain = ''Players:Expansion2_Players'' GROUP BY p.CivilizationType'),
-('POCD_ItemValues', 'SELECT CASE x.Cat WHEN ''D'' THEN ''POCD_Districts'' WHEN ''B'' THEN ''POCD_Buildings'' WHEN ''I'' THEN ''POCD_Improvements'' ELSE ''POCD_Units'' END AS Domain, i.Type AS Value, i.Name AS Name, i.Description AS Description, i.Icon AS Icon, 100 AS SortIndex FROM PlayerItems i JOIN POCD_Index x ON x.Cat IN (''D'', ''B'', ''I'', ''U'') AND x.Entity = i.Type WHERE i.Domain = ''Players:Expansion2_Players'' GROUP BY i.Type');
+('POCD_ItemValues', 'SELECT CASE x.Cat WHEN ''D'' THEN ''POCD_Districts'' WHEN ''B'' THEN ''POCD_Buildings'' WHEN ''I'' THEN ''POCD_Improvements'' ELSE ''POCD_Units'' END AS Domain, i.Type AS Value, i.Name AS Name, i.Description AS Description, i.Icon AS Icon, 100 AS SortIndex FROM PlayerItems i JOIN POCD_Index x ON x.Cat IN (''D'', ''B'', ''I'', ''U'') AND x.Entity = i.Type WHERE i.Domain = ''Players:Expansion2_Players'' AND x.Entity NOT IN (SELECT ItemType FROM POCD_LeaderMechanics) GROUP BY i.Type');
 INSERT INTO DomainValueQueries (QueryId) VALUES ('POCD_CivValues'), ('POCD_ItemValues');
 
 INSERT OR REPLACE INTO DomainValues (Domain, Value, Name, Description, Icon, SortIndex) VALUES
@@ -322,7 +322,6 @@ INSERT OR REPLACE INTO POCD_Locks (Owner, Cat, ItemType) VALUES
 ('LEADER_MATTHIAS_CORVINUS', 'U', 'UNIT_HUNGARY_BLACK_ARMY'),
 ('LEADER_MVEMBA', 'D', 'DISTRICT_MBANZA'),
 ('LEADER_PACHACUTI', 'I', 'IMPROVEMENT_MOUNTAIN_ROAD'),
-('LEADER_SIMON_BOLIVAR', 'U', 'UNIT_COMANDANTE_GENERAL'),
 ('LEADER_SULEIMAN', 'U', 'UNIT_SULEIMAN_JANISSARY'),
 ('LEADER_THEODORA', 'D', 'DISTRICT_HIPPODROME'),
 ('LEADER_T_ROOSEVELT_ROUGHRIDER', 'U', 'UNIT_AMERICAN_ROUGH_RIDER'),
@@ -332,3 +331,13 @@ INSERT OR REPLACE INTO POCD_Locks (Owner, Cat, ItemType) VALUES
 ('CIVILIZATION_KOREA', 'D', 'DISTRICT_SEOWON'),
 ('CIVILIZATION_MAYA', 'D', 'DISTRICT_OBSERVATORY'),
 ('CIVILIZATION_SCYTHIA', 'U', 'UNIT_SCYTHIAN_HORSE_ARCHER');
+
+-- 0.1.3: items that are a leader's own mechanic, not a draft pick: not in the menus and not rolled;
+-- the leader always gets them in the game (Data/POCD_Apply.sql). Their POCD_Index numbers stay.
+CREATE TABLE IF NOT EXISTS POCD_LeaderMechanics (
+	LeaderType TEXT NOT NULL,
+	ItemType TEXT NOT NULL,
+	PRIMARY KEY (LeaderType, ItemType)
+);
+INSERT OR REPLACE INTO POCD_LeaderMechanics (LeaderType, ItemType) VALUES
+('LEADER_SIMON_BOLIVAR', 'UNIT_COMANDANTE_GENERAL');
